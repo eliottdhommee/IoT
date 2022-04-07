@@ -23,9 +23,10 @@ Vagrant.configure(2) do |config|
 			export INSTALL_K3S_EXEC="--node-ip=#{master_ip} --flannel-iface=eth1 --tls-san #{master_ip} --bind-address=#{master_ip} --advertise-address=#{master_ip} --node-external-ip=#{master_ip} --write-kubeconfig-mode 644"
 			curl -sfL https://get.k3s.io |  sh -s - --docker
 			echo "alias k='kubectl'" >> /etc/profile.d/00-aliases.sh
-			cd /vagrant/app1
-			docker image build . -t app1:dev --no-cache --network=host
-			cp /vagrant/app1.yaml /var/lib/rancher/k3s/server/manifests/
+			/usr/local/bin/kubectl apply -f /vagrant/conf/app1.yaml
+			/usr/local/bin/kubectl apply -f /vagrant/conf/app2.yaml
+			/usr/local/bin/kubectl apply -f /vagrant/conf/app3.yaml
+			/usr/local/bin/kubectl apply -f /vagrant/conf/ingress.yaml
 		SHELL
 	end
 end
