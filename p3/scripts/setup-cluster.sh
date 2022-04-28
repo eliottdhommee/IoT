@@ -6,8 +6,6 @@ kubectl create namespace dev
 kubectl apply -f ../confs/install.yaml -n argocd
 kubectl apply -f ../confs/ingress.yaml -n argocd
 kubectl rollout status deployment argocd-server -n argocd
-kubectl rollout status deployment argocd-redis -n argocd
-kubectl rollout status deployment argocd-repo-server -n argocd
-kubectl rollout status deployment argocd-dex-server -n argocd
 kubectl apply -f ../confs/argo-app.yaml -n argocd
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+echo `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d ` > argocd_password.txt
+echo `kubectl get ingress -n argocd | grep argocd | awk '{print $4}'` > argocd_ip.txt

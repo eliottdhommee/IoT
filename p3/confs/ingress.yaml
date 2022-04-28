@@ -5,6 +5,11 @@ metadata:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  defaultBackend:
+    service:
+      name: argocd-server
+      port:
+        number: 80
   rules:
   - http:
       paths:

@@ -14,7 +14,7 @@ export default () => {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<Home name="App1" />
+					<Home name="App3" />
 				</a>
 			</header>
 		</div>
