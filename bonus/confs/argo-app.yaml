@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://gitlab.example.com/gitlab-instance-5a95ba7a/edhommee-argocd.git
+    repoURL: http://gitlab-webservice-default.gitlab:8181/root/edhommee-argocd.git/
     path: .
     targetRevision: main
   syncPolicy:

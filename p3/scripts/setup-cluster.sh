@@ -1,4 +1,5 @@
 #! /bin/sh
+export K3D_FIX_DNS=1
 
 k3d cluster create part3 -p 8080:80@loadbalancer -p 8443:443@loadbalancer -p 4242:3006
 kubectl create namespace argocd
