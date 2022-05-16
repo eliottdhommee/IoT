@@ -7,7 +7,7 @@
 kubectl create namespace gitlab
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
-helm upgrade --install gitlab gitlab/gitlab  --timeout 800s --set global.edition=ce --set global.hosts.domain=example.com --set global.ingress.enabled=false --set nginx-ingress.enabled=false --set certmanager-issuer.email=eliottdhommee@gmail.com --namespace=gitlab
+helm upgrade --install gitlab gitlab/gitlab --version 5.10.0  --timeout 800s --set global.edition=ce  --set certmanager-issuer.email=eliottdhommee@gmail.com --namespace=gitlab -f ../confs/values.yaml
 kubectl apply -f ../confs/gitlab-ingress.yaml -n gitlab
 IPEXT=`kubectl get ingress -n gitlab | grep gitlab | awk '{print $4}'`
 echo "$IPEXT gitlab.example.com" | sudo tee -a  /etc/hosts
